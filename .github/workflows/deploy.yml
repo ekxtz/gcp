@@ -53,8 +53,9 @@ jobs:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.REGION }}
           source: './'
-          # FINAL FIX: Allows the public to access the website without authentication
-          allow-unauthenticated: true
+          # FINAL FIX: Uses the 'flags' input to pass the --allow-unauthenticated argument,
+          # bypassing the version incompatibility issue.
+          flags: '--allow-unauthenticated'
 
       # Output the final URL
       - name: 'Show output'
