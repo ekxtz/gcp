@@ -1,6 +1,6 @@
 name: 'Deploy to Cloud Run from Source (WIF)'
 
-# 1. Triggers the workflow on push to the 'main' branch or manual dispatch
+# 1. Trig the workflow on push to the 'main' branch or manual dispatch
 on:
   push:
     branches:
