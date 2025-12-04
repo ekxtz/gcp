@@ -1,4 +1,4 @@
- name: 'Deploy to Cloud Run from Source (Service Account Key)'
+name: 'Deploy to Cloud Run from Source (Service Account Key)'
 
 # Triggers the workflow on push to the 'main' branch or manual dispatch
 on:
@@ -37,7 +37,7 @@ jobs:
         name: 'Authenticate to Google Cloud (via Service Account Key)'
         uses: 'google-github-actions/auth@v2'
         with:
-          # This pulls the JSON key from the GitHub Secret named GCP_SA_KEY
+          # CORRECTED: Pulls the JSON key from the GitHub Secret named GCP_SA_KEY
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           
           # CRITICAL FIX: Explicitly set WIF-related inputs to null 
