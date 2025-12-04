@@ -1,51 +1,55 @@
-name: 'Deploy to Cloud Run from Source (WIF)'
+ name: 'Deploy to Cloud Run from Source (Service Account Key)'
 
+# Triggers the workflow on push to the 'main' branch or manual dispatch
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
+# Define environment variables with your specific parameters
 env:
   PROJECT_ID: "terraform-479314"
   REGION: "europe-north1"
   SERVICE_NAME: "my-static-website-gcp-123"
+  # This variable is no longer used for WIF, but defined for clarity.
   GCP_SA_EMAIL: "github-deployer@terraform-479314.iam.gserviceaccount.com"
   
-  WIF_PROVIDER: "projects/420265886954/locations/global/workloadIdentityPools/github-pool/providers/github-provider" 
-
-# 3. Define the deployment job
+# Define the deployment job
 jobs:
   deploy:
     runs-on: 'ubuntu-latest'
 
-    
+    # Permissions are simplified since we no longer need the 'id-token: write' for WIF
     permissions:
       contents: 'read'
-      id-token: 'write' 
 
     steps:
       - name: 'Checkout'
         uses: 'actions/checkout@v4'
 
-    
+      # -----------------------------------------------------------------
+      # AUTHENTICATION: Using the Service Account Key Secret
+      # -----------------------------------------------------------------
+
+      # Authenticate to Google Cloud using the Service Account Key
       - id: 'auth'
-        name: 'Authenticate to Google Cloud (via WIF)'
+        name: 'Authenticate to Google Cloud (via Service Account Key)'
         uses: 'google-github-actions/auth@v2'
         with:
-          workload_identity_provider: ${{ env.WIF_PROVIDER }}
-          service_account: ${{ env.GCP_SA_EMAIL }}
+          # This pulls the JSON key from the GitHub Secret named GCP_CREDENTIALS
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-  
+      # Deploy to Cloud Run (automatically builds and deploys from source)
       - name: 'Deploy to Cloud Run'
-        id: 'deploy' 
+        id: 'deploy' # This ID is crucial for the final URL output
         uses: 'google-github-actions/deploy-cloudrun@v2'
         with:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.REGION }}
           source: './'
 
-  
+      # Output the final URL
       - name: 'Show output'
         run: |
           echo "Cloud Run Service URL: ${{ steps.deploy.outputs.url }}"
