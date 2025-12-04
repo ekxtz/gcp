@@ -15,7 +15,6 @@ env:
   GCP_SA_EMAIL: "github-deployer@terraform-479314.iam.gserviceaccount.com"
   
   # ✅ FINAL WORKLOAD IDENTITY PROVIDER RESOURCE NAME
-  # This value is confirmed for your setup.
   WIF_PROVIDER: "projects/420265886954/locations/global/workloadIdentityPools/github-pool/providers/github-provider" 
 
 # 3. Define the deployment job
@@ -34,11 +33,10 @@ jobs:
 
       # -----------------------------------------------------------------
       # CONTINUOUS DEPLOYMENT (CD) STEPS
-      # NOTE: The CI steps (npm install, npm run test) were REMOVED 
-      # to fix the 'package.json' error.
+      # The CI steps (npm install, npm run test) were REMOVED to fix the 'package.json' error.
       # -----------------------------------------------------------------
 
-      # 3a. Authenticate to Google Cloud using Workload Identity Federation
+      # 3a. Authenticate to Google Cloud using Workload Identity Federation (Now configured correctly!)
       - id: 'auth'
         name: 'Authenticate to Google Cloud (via WIF)'
         uses: 'google-github-actions/auth@v2'
@@ -55,7 +53,7 @@ jobs:
           region: ${{ env.REGION }}
           source: './'
 
-      # 3c. Output the final URL (Using | for stable parsing)
+      # 3c. Output the final URL
       - name: 'Show output'
         run: |
           echo "Cloud Run Service URL: ${{ steps.deploy.outputs.url }}"
