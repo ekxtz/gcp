@@ -1,4 +1,4 @@
-name: 'Deploy to Cloud Run from Source (Service Account Key)'
+ name: 'Deploy to Cloud Run from Source (Service Account Key)'
 
 # Triggers the workflow on push to the 'main' branch or manual dispatch
 on:
@@ -37,7 +37,7 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           # This variable securely pulls the JSON key from GitHub Secrets
-          credentials_json: ${{ GCP_SA_KEY }}
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       # Deploy to Cloud Run (automatically builds and deploys from source)
       - name: 'Deploy to Cloud Run'
