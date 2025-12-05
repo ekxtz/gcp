@@ -1,3 +1,8 @@
+ci -cd -success process by ADVIT TUTORIAL  HERE ----->>  https://github.com/ekxtz/github-actions-part-2-cicd-to-aws/
+
+
+
+
 
 GCP_task_for_epam_031225_‼️  README.md FILE HERE код до клауду кладемо в репозиторій і додаємо a0morshna  як мембера‼️
 and this is my trying to do ci-cd github actions from youtube     ----->   https://github.com/ekxtz/github-actions-gcs
