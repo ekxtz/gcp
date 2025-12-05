@@ -1,5 +1,12 @@
-ci -cd -success process by ADVIT TUTORIAL  HERE ----->>  https://github.com/ekxtz/github-actions-part-2-cicd-to-aws/
-OIDC AWS SUCCESS by ADVIT TUTORIAL  HERE ----->>   https://github.com/ekxtz/-oidc-aws-integration
+‼️ ekxtzkriv@gmail.com  ‼️ 
+
+
+  ‼️ i add to this 2 repos to the repo team ‼️
+   
+‼️ ci -cd -‼️success‼️ process by ADVIT TUTORIAL  HERE ----->>  https://github.com/ekxtz/github-actions-part-2-cicd-to-aws/ ‼️
+
+
+‼️ OIDC AWS‼️ SUCCESS‼️ by ADVIT TUTORIAL  HERE ----->>   https://github.com/ekxtz/-oidc-aws-integration   ‼️  
 
 
 
@@ -8,6 +15,10 @@ GCP_task_for_epam_031225_‼️  README.md FILE HERE код до клауду к
 and this is my trying to do ci-cd github actions from youtube     ----->   https://github.com/ekxtz/github-actions-gcs
 THIS IS A EPAM TASK.
 tHIS IS A EPAM TASK.
+
+
+‼️My review  ‼️ 
+
 
 1) Create a Google Cloud Storage bucket and configure it to host a static website with public access.  (Done)
 2) Create HTTP Load Balancer and configure it to use the bucket as the ba ckend. (Done) 
